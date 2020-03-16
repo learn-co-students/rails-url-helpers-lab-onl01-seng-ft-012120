@@ -55,7 +55,6 @@ describe 'Activate page' do
   before do
     @student = Student.create!(first_name: "Daenerys", last_name: "Targaryen")
   end
-
   it "Should mark an inactive student as active" do
     visit activate_student_path(@student)
     @student.reload
@@ -65,6 +64,7 @@ describe 'Activate page' do
   it "Should mark an active student as inactive" do
     @student.active = true
     @student.save
+
     visit activate_student_path(@student)
     @student.reload
     expect(@student.active).to eq(false)
