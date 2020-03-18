@@ -1,5 +1,12 @@
 <div>
   <% @students.each do |student| %>
-    <div><%= student.first_name + " " + student.last_name %></div>
+    <div>
+      <%= link_to((student.first_name + " " + student.last_name), student_path(student)) %>
+      <% if student.active %>
+        <p>This student is currently active.</p>
+      <% else %>
+        <p>This student is currently inactive.</p>
+      <% end %>
+    </div>
   <% end %>
 </div>
